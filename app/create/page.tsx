@@ -215,8 +215,10 @@ export default function CreatorTransformerPage() {
 
   // Render formatted content with bold support
   const renderFormattedContent = (content: string) => {
-    // Convert **text** to <strong> tags for actual bold formatting
-    const formattedContent = content.replace(/\*\*([^*\n]{1,50})\*\*/g, '<strong>$1</strong>');
+    // Keep bold formatting while rendering generated content as escaped text.
+    const formattedContent = content.split(/(\*\*[^*\n]{1,50}\*\*)/g).map((part, index) =>
+      index % 2 === 1 ? <strong key={index}>{part.slice(2, -2)}</strong> : part
+    );
     
     return (
       <div 
@@ -225,8 +227,9 @@ export default function CreatorTransformerPage() {
             ? 'bg-black/20 text-gray-100' 
             : 'bg-gray-100/50 text-gray-800'
         }`}
-        dangerouslySetInnerHTML={{ __html: formattedContent }}
-      />
+      >
+        {formattedContent}
+      </div>
     );
   };
 

@@ -1,8 +1,10 @@
+CSpark Content Studio, metinlerini veya web yazılarını özetlere, video senaryolarına ve sosyal medya paylaşımlarına dönüştürür.
+
 <p align="center">
   <img src="public/octopus-logo.png" width="112" alt="CSpark ahtapot logosu" />
 </p>
 
-<h1 align="center">CSpark</h1>
+<h1 align="center">CSpark Content Studio</h1>
 
 <p align="center"><strong>Tek fikir. Birçok anlatım.</strong></p>
 <p align="center">Özet, video senaryosu, sosyal medya paylaşımı ve SEO metni için yapay zekâ destekli içerik çalışma alanı.</p>
@@ -51,8 +53,8 @@ Senaryolar ve küçük resim önerileri metin çıktılarıdır. Bu repo bitmiş
 Kilit dosyasında **Next.js 15.4.6**, **React 19.1.0** ve **Tailwind CSS 3.4.x** bulunur.
 
 ```bash
-git clone https://github.com/ArdaHFO/cspark.app.git
-cd cspark.app
+git clone https://github.com/ArdaHFO/cspark-content-studio.git
+cd cspark-content-studio
 npm ci
 ```
 
@@ -126,11 +128,10 @@ backend/      Alternatif Python/FastAPI uygulaması
 - [API istek türleri ve yardımcıları](lib/api.ts)
 - [Üretim uygulaması](app/api/generate/route.ts)
 - [Alternatif backend rehberi](backend/README.md)
-- [Hata bildirimleri ve özellik talepleri](https://github.com/ArdaHFO/cspark.app/issues)
+- [Hata bildirimleri ve özellik talepleri](https://github.com/ArdaHFO/cspark-content-studio/issues)
 
 Tekrarlanabilir hata bildirimi için rota veya ekranı, girdi türünü, üretim ayarlarını ve gözlenen davranışı ekle. Çıktının yapılandırılmış sağlayıcıdan mı yoksa yedek yanıttan mı geldiğini belirt. Kimlik bilgilerini ve özel kaynak metinleri raporlara koyma. Odaklı pull request'lerde değişikliği ve nasıl kontrol edildiğini açıkla.
 
 ## Lisans ve kaynaklar
 
 Projenin kodu [MIT lisansı](LICENSE) ile dağıtılır. Modellere erişim ve üçüncü taraf paketler kendi koşullarına tabidir. Mevcut CSpark logosu bu repodan kullanılmıştır.
-

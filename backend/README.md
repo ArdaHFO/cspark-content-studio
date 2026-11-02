@@ -1,6 +1,10 @@
-# Creator Transformer
+This service turns text into summaries and scripts for videos.
+
+# CSpark Content Studio backend
 
 AI-powered content generator that creates summaries, YouTube scripts, and Shorts scripts from text input.
+
+These are historical deployment notes. The main Next.js application now uses its own API routes. See the [current project guide](../README.md) for the active setup and known limits.
 
 ## Features
 

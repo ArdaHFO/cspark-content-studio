@@ -1,8 +1,10 @@
+CSpark Content Studio turns your text or web articles into summaries, video scripts and social media posts.
+
 <p align="center">
   <img src="public/octopus-logo.png" width="112" alt="CSpark octopus logo" />
 </p>
 
-<h1 align="center">CSpark</h1>
+<h1 align="center">CSpark Content Studio</h1>
 
 <p align="center"><strong>One idea. More ways to tell it.</strong></p>
 <p align="center">An AI-assisted content creation workspace for summaries, video scripts, social posts and SEO copy.</p>
@@ -51,8 +53,8 @@ The scripts and thumbnail guidance are text outputs. This repository does not re
 The lockfile records **Next.js 15.4.6**, **React 19.1.0** and **Tailwind CSS 3.4.x**.
 
 ```bash
-git clone https://github.com/ArdaHFO/cspark.app.git
-cd cspark.app
+git clone https://github.com/ArdaHFO/cspark-content-studio.git
+cd cspark-content-studio
 npm ci
 ```
 
@@ -126,11 +128,10 @@ backend/      Alternative Python/FastAPI implementation
 - [API request types and helpers](lib/api.ts)
 - [Generation implementation](app/api/generate/route.ts)
 - [Alternative backend guide](backend/README.md)
-- [Issues and feature requests](https://github.com/ArdaHFO/cspark.app/issues)
+- [Issues and feature requests](https://github.com/ArdaHFO/cspark-content-studio/issues)
 
 For a reproducible issue, include the route or screen, input type, generation settings and observed behavior. State whether the output came from a configured provider or a fallback. Keep credentials and private source material out of reports. Focused pull requests should explain what changed and how it was checked.
 
 ## License and credits
 
 Project code is distributed under the [MIT license](LICENSE). Model access and third-party packages remain subject to their respective terms. The existing CSpark logo is reused from this repository.
-
