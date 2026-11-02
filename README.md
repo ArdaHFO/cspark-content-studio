@@ -1,173 +1,136 @@
-# 🐙 CSpark - AI-Powered Content Creation Platform
+<p align="center">
+  <img src="public/octopus-logo.png" width="112" alt="CSpark octopus logo" />
+</p>
 
-Modern AI destekli içerik yaratım platformu. Yapay zeka ile YouTube videoları, özetler, sosyal medya içerikleri ve daha fazlasını oluşturun.
+<h1 align="center">CSpark</h1>
 
-## 🚀 Canlı Demo
+<p align="center"><strong>One idea. More ways to tell it.</strong></p>
+<p align="center">An AI-assisted content creation workspace for summaries, video scripts, social posts and SEO copy.</p>
 
-**Website:** [www.cspark.app](https://www.cspark.app)
+<p align="center">
+  <strong>English</strong> · <a href="README.tr.md">Türkçe</a><br />
+  <a href="#run-locally"><strong>Run locally</strong></a> ·
+  <a href="https://cspark-app.vercel.app">Project website</a> ·
+  <a href="#api-at-a-glance">API reference</a>
+</p>
 
-## ✨ Özellikler
+---
 
-- 🐙 **CSpark AI Engine** - Llama-3.1-8B-Instruct modeli ile güçlendirilmiş
-- 🎨 **Modern Arayüz** - Dark/Light theme desteği ile responsive tasarım  
-- 🌐 **URL İçerik Çıkarma** - Web sitelerinden otomatik metin çıkarma
-- � **YouTube İçerik Üretimi** - Script, thumbnail, SEO optimizasyonu
-- 📱 **Çoklu Format Desteği** - Shorts, özet, sosyal medya içerikleri
-- ☁️ **Serverless Mimari** - Ölçeklenebilir ve güvenilir altyapı
-- 🎯 **SEO Optimizasyonu** - 25-30 hashtag ile kapsamlı SEO paketi
+Start with text or a web article, choose an output format, and adapt the result for a different audience or channel. CSpark combines a Turkish-first interface with Turkish and English generation options, configurable tone and length, and tools to copy or download generated text.
 
-## 🏗️ Teknoloji Stack
+**This repository contains a web application prototype.** The active frontend calls its own Next.js API routes. The login screen simulates sign-in, and provider failures can return canned sample responses. Read the current limits before treating a response as successful live inference.
 
-### Frontend
-- **Next.js 15.4.6** - React framework with Turbopack
-- **React 19.1.0** - Modern UI library
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Smooth animations
-- **Lucide React** - Beautiful icons
+## Get started
 
-### Backend
-- **Vercel API Routes** - Serverless functions
-- **Hugging Face API** - AI model integration  
-- **Python Flask** - Backend API server
+| Requirement | Repository setup |
+| --- | --- |
+| Runtime | Node.js compatible with the locked Next.js 15.4.6 release, such as 20.x or later |
+| Package manager | npm, with the committed `package-lock.json` |
+| AI generation | A Hugging Face token with access to the configured inference provider |
+| Interface | Turkish-first UI, Turkish and English generation options |
+| Default API | Next.js routes under `/api` |
 
-### AI & Content
-- **meta-llama/Llama-3.1-8B-Instruct** - Content generation
-- **Anti-repetition algorithms** - Unique content guarantee
-- **Advanced prompt engineering** - Quality content output
+1. Follow the local setup below and open [localhost:3000](http://localhost:3000).
+2. Open the content workspace at [localhost:3000/create](http://localhost:3000/create).
+3. Enter text or a supported web URL, choose a content type and generation settings, then review the output before copying or downloading it.
 
-## 🚀 Kurulum ve Çalıştırma
+## Inside the workspace
 
-### 1. Proje Klonlama
+- **Five output formats.** Generate summaries, YouTube scripts, short-form scripts, social posts and SEO text.
+- **Text and article input.** Submit plain text or extract text from a URL through the server-side extraction route.
+- **Adjustable writing.** Select Turkish or English, tone and length. Video-oriented requests also accept a duration.
+- **Template-led conversations.** The agent interface provides starting prompts for writing, video, social and SEO tasks.
+- **Multiple outputs from one input.** The bulk endpoint requests all five formats in sequence and returns the successful results.
+- **Reusable text.** Copy generated content or download it as a text file.
+- **A responsive interface.** Animated components and light/dark presentation support the content workflow.
+
+The scripts and thumbnail guidance are text outputs. This repository does not render finished videos or generate thumbnail image files.
+
+## Run locally
+
+The lockfile records **Next.js 15.4.6**, **React 19.1.0** and **Tailwind CSS 3.4.x**.
+
 ```bash
-git clone https://github.com/your-username/cspark.git
-cd cspark
+git clone https://github.com/ArdaHFO/cspark.app.git
+cd cspark.app
+npm ci
 ```
 
-### 2. Dependencies Kurulumu
-```bash
-npm install
+Create `.env.local` in the repository root. No `.env.example` file is included.
+
+```dotenv
+HF_API_TOKEN=your_hugging_face_token
 ```
 
-### 3. Environment Variables
-```bash
-# .env.local dosyasını oluşturun
-cp .env.example .env.local
+Keep the token on the server and outside version control. The active [generation route](app/api/generate/route.ts) calls the Hugging Face Router with `deepseek-ai/DeepSeek-R1-Distill-Qwen-14B:novita`. Availability and access depend on the provider account.
 
-# Hugging Face token'ınızı ekleyin
-HF_API_TOKEN=your_hugging_face_token_here
-```
-
-### 4. Development Server
 ```bash
 npm run dev
 ```
 
-Site: http://localhost:3000
-
-## 🌐 Production Deployment
-
-### Vercel Deployment
-
-1. Vercel Dashboard → New Project
-2. GitHub repository'sini seçin
-3. Environment Variables ekleyin:
-   - `HF_API_TOKEN`: Hugging Face API token'ınız
-4. Deploy butonuna tıklayın
-
-### Environment Variables Ayarları
-
-Vercel Dashboard → Settings → Environment Variables:
-
-```
-HF_API_TOKEN=hf_your_token_here
-```
-
-## 📋 API Endpoints
-
-- `GET /api/health` - Sistem sağlık kontrolü
-- `POST /api/generate` - AI içerik üretimi  
-- `POST /api/extract` - URL'den içerik çıkarma
-
-### API Kullanım Örneği
+To prepare and serve a production build locally:
 
 ```bash
-# İçerik üretimi
-curl -X POST https://www.cspark.app/api/generate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "input": "Yapay zeka hakkında bir metin",
-    "task": "summary", 
-    "lang": "tr"
-  }'
-
-# URL'den içerik çıkarma
-curl -X POST https://www.cspark.app/api/extract \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://example.com"}'
+npm run build
+npm start
 ```
 
-## 🗂️ Proje Yapısı
+The [API client](lib/api.ts) uses relative `/api` URLs. A separate Python server is not required for this path. The [backend directory](backend/) retains an alternative FastAPI implementation and its [earlier setup guide](backend/README.md), with different model defaults.
 
-```
-cspark.app/
-├── app/                    # Next.js App Router
-│   ├── api/               # Vercel API Routes
-│   │   ├── health/        # Health check endpoint
-│   │   ├── generate/      # AI content generation
-│   │   └── extract/       # URL content extraction
-│   ├── landing/           # Landing page
-│   ├── app/              # Main app interface
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Home page
-├── lib/                   # Utility functions
-│   └── api.ts            # API client
-├── public/               # Static assets
-├── backend/              # Legacy FastAPI backend (optional)
-├── docs/                 # Documentation
-└── package.json          # Dependencies
-```
+## API at a glance
 
-## 🧪 Test
+| Endpoint | Purpose |
+| --- | --- |
+| `GET /api/health` | Basic route health response |
+| `POST /api/extract` | Extract article text from a `url` |
+| `POST /api/generate` | Generate one output from `input`, `task` and optional settings |
+| `POST /api/generate-all` | Request all five output formats |
 
-```bash
-# Health check
-curl http://localhost:3000/api/health
+Example request to `POST /api/generate`:
 
-# API test
-npm run test
+```json
+{
+  "input": "Your source text",
+  "task": "summary",
+  "lang": "en",
+  "tone": "professional",
+  "length": "medium"
+}
 ```
 
-## 🤖 Desteklenen İçerik Türleri
+Valid tasks are `summary`, `youtube`, `shorts`, `social` and `seo`. The single-output route returns a `result` string. Bulk generation may omit formats whose requests failed.
 
-- **summary** - Metin özetleme
-- **youtube** - YouTube video senaryosu
-- **shorts** - YouTube Shorts/TikTok içeriği
-- **social** - Sosyal medya paylaşımları
-- **seo** - SEO optimizasyonu
+## Validation and current limits
 
-## 🌍 Dil Desteği
+This documentation was checked against the repository source and configuration. No application build, browser session or live provider request was run for this update.
 
-- **Türkçe** (tr) - Ana dil
-- **İngilizce** (en) - İkincil dil
+- The generation route trims source text to 4,000 characters before constructing the prompt.
+- Missing credentials or inference failures may produce a canned response with a successful HTTP status. A health response alone does not verify AI generation.
+- The login flow is a UI simulation, not a completed account or authorization system.
+- The trends endpoints currently return placeholder data. They are not a verified trends integration.
+- There is no `test` script in `package.json`. Build and lint commands are available, but no passing result is claimed here.
+- Web extraction depends on the target site's markup and accessibility. Generated content still needs factual and editorial review.
 
-## 📄 Lisans
+## Project map
 
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+```text
+app/          Pages, layouts and Next.js API routes
+components/   Shared interface and animation components
+lib/          Frontend API client and utilities
+public/       Existing logos and static assets
+backend/      Alternative Python/FastAPI implementation
+```
 
-## 🤝 Katkıda Bulunma
+## Documentation and contributions
 
-1. Fork edin
-2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Commit edin (`git commit -m 'Add amazing feature'`)
-4. Push edin (`git push origin feature/amazing-feature`)
-5. Pull Request açın
+- [API request types and helpers](lib/api.ts)
+- [Generation implementation](app/api/generate/route.ts)
+- [Alternative backend guide](backend/README.md)
+- [Issues and feature requests](https://github.com/ArdaHFO/cspark.app/issues)
 
-## 📞 İletişim
+For a reproducible issue, include the route or screen, input type, generation settings and observed behavior. State whether the output came from a configured provider or a fallback. Keep credentials and private source material out of reports. Focused pull requests should explain what changed and how it was checked.
 
-- **Website:** [www.cspark.app](https://www.cspark.app)
-- **GitHub:** [ArdaHFO/cspark.app](https://github.com/ArdaHFO/cspark.app)
+## License and credits
 
----
+Project code is distributed under the [MIT license](LICENSE). Model access and third-party packages remain subject to their respective terms. The existing CSpark logo is reused from this repository.
 
-⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
