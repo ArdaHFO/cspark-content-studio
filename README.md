@@ -20,7 +20,7 @@ CSpark Content Studio turns your text or web articles into summaries, video scri
 
 Start with text or a web article, choose an output format, and adapt the result for a different audience or channel. CSpark combines a Turkish-first interface with Turkish and English generation options, configurable tone and length, and tools to copy or download generated text.
 
-**This repository contains a web application prototype.** The active frontend calls its own Next.js API routes. The login screen simulates sign-in, and provider failures can return canned sample responses. Read the current limits before treating a response as successful live inference.
+**This repository contains a web application.** The active frontend calls its own Next.js API routes. The login screen simulates sign-in, and provider failures can return canned sample responses. Read the current limits before treating a response as successful live inference.
 
 ## Get started
 

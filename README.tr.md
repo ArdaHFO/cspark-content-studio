@@ -20,7 +20,7 @@ CSpark Content Studio, metinlerini veya web yazılarını özetlere, video senar
 
 Bir metin veya web yazısıyla başla, çıktı biçimini seç ve sonucu farklı bir kitleye ya da kanala uyarla. CSpark, Türkçe ağırlıklı arayüzünü Türkçe ve İngilizce üretim seçenekleri, ton ve uzunluk ayarları, metni kopyalama ve indirme araçlarıyla birleştirir.
 
-**Bu repo bir web uygulaması prototipi içerir.** Aktif arayüz kendi Next.js API rotalarını çağırır. Giriş ekranı oturum açmayı simüle eder ve sağlayıcı hatalarında hazır örnek yanıtlar dönebilir. Bir yanıtı başarılı canlı model üretimi olarak değerlendirmeden önce mevcut sınırları incele.
+**Bu repo bir web uygulaması içerir.** Aktif arayüz kendi Next.js API rotalarını çağırır. Giriş ekranı oturum açmayı simüle eder ve sağlayıcı hatalarında hazır örnek yanıtlar dönebilir. Bir yanıtı başarılı canlı model üretimi olarak değerlendirmeden önce mevcut sınırları incele.
 
 ## Başlangıç
 
