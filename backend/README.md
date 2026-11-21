@@ -2,17 +2,14 @@ This service turns text into summaries and scripts for videos.
 
 # CSpark Content Studio backend
 
-AI-powered content generator that creates summaries, YouTube scripts, and Shorts scripts from text input.
-
-These are historical deployment notes. The main Next.js application now uses its own API routes. See the [current project guide](../README.md) for the active setup and known limits.
+This is the alternative Python backend. The main Next.js app uses its own API routes, so this service is not required for the default setup. See the [project guide](../README.md).
 
 ## Features
 
-- **Summary Generation**: Create concise summaries of any text
-- **YouTube Script**: Generate engaging video scripts for YouTube
-- **Shorts Script**: Create punchy scripts for short-form content
-- **Multi-language Support**: Turkish and English support with auto-detection
-- **Customizable Options**: Choose tone (formal, casual, energetic) and length (short, medium, long)
+- Summaries, YouTube scripts and short-form video scripts.
+- Turkish and English, with automatic language detection.
+- Tone settings: formal, casual or energetic.
+- Length settings: short, medium or long.
 
 ## API Endpoints
 
@@ -48,7 +45,7 @@ This app is designed to run on Hugging Face Spaces with the following configurat
 
 ## Usage with Frontend
 
-This backend is designed to work with a Next.js frontend deployed on Vercel. The frontend should set:
+The earlier Vercel frontend setup used the following variable to call this service. The current frontend uses relative Next.js API routes instead:
 
 ```javascript
 NEXT_PUBLIC_API_BASE=https://your-space.hf.space
@@ -58,7 +55,7 @@ NEXT_PUBLIC_API_BASE=https://your-space.hf.space
 
 - **Text Generation**: `mistralai/Mistral-7B-Instruct-v0.3`
 - Supports Turkish and English content generation
-- Optimized prompts for different content types
+- Separate prompts for each content type
 
 ## License
 

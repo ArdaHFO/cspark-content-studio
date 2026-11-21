@@ -1,13 +1,11 @@
-CSpark Content Studio turns your text or web articles into summaries, video scripts and social media posts.
+CSpark Content Studio creates summaries, video scripts, social posts and SEO copy from text or web articles.
+
 
 <p align="center">
   <img src="public/octopus-logo.png" width="112" alt="CSpark octopus logo" />
 </p>
 
 <h1 align="center">CSpark Content Studio</h1>
-
-<p align="center"><strong>One idea. More ways to tell it.</strong></p>
-<p align="center">An AI-assisted content creation workspace for summaries, video scripts, social posts and SEO copy.</p>
 
 <p align="center">
   <strong>English</strong> · <a href="README.tr.md">Türkçe</a><br />
@@ -16,39 +14,20 @@ CSpark Content Studio turns your text or web articles into summaries, video scri
   <a href="#api-at-a-glance">API reference</a>
 </p>
 
----
+The interface is mainly Turkish, with Turkish and English generation options. You can set the tone, length and video duration, then copy the result or download it as text.
 
-Start with text or a web article, choose an output format, and adapt the result for a different audience or channel. CSpark combines a Turkish-first interface with Turkish and English generation options, configurable tone and length, and tools to copy or download generated text.
+## Content options
 
-**This repository contains a web application.** The active frontend calls its own Next.js API routes. The login screen simulates sign-in, and provider failures can return canned sample responses. Read the current limits before treating a response as successful live inference.
+- Summaries, YouTube scripts, short-form video scripts, social posts and SEO text.
+- Plain-text input or article extraction from a URL.
+- Starting prompts for writing, video, social media and SEO conversations.
+- A bulk endpoint that requests all five formats and returns whichever succeed.
 
-## Get started
-
-| Requirement | Repository setup |
-| --- | --- |
-| Runtime | Node.js compatible with the locked Next.js 15.4.6 release, such as 20.x or later |
-| Package manager | npm, with the committed `package-lock.json` |
-| AI generation | A Hugging Face token with access to the configured inference provider |
-| Interface | Turkish-first UI, Turkish and English generation options |
-| Default API | Next.js routes under `/api` |
-
-1. Follow the local setup below and open [localhost:3000](http://localhost:3000).
-2. Open the content workspace at [localhost:3000/create](http://localhost:3000/create).
-3. Enter text or a supported web URL, choose a content type and generation settings, then review the output before copying or downloading it.
-
-## Inside the workspace
-
-- **Five output formats.** Generate summaries, YouTube scripts, short-form scripts, social posts and SEO text.
-- **Text and article input.** Submit plain text or extract text from a URL through the server-side extraction route.
-- **Adjustable writing.** Select Turkish or English, tone and length. Video-oriented requests also accept a duration.
-- **Template-led conversations.** The agent interface provides starting prompts for writing, video, social and SEO tasks.
-- **Multiple outputs from one input.** The bulk endpoint requests all five formats in sequence and returns the successful results.
-- **Reusable text.** Copy generated content or download it as a text file.
-- **A responsive interface.** Animated components and light/dark presentation support the content workflow.
-
-The scripts and thumbnail guidance are text outputs. This repository does not render finished videos or generate thumbnail image files.
+Video scripts and thumbnail suggestions are text outputs. The app does not create video files or thumbnail images.
 
 ## Run locally
+
+Use Node.js compatible with Next.js 15.4.6, such as 20.x or later, and npm.
 
 The lockfile records **Next.js 15.4.6**, **React 19.1.0** and **Tailwind CSS 3.4.x**.
 
@@ -69,6 +48,8 @@ Keep the token on the server and outside version control. The active [generation
 ```bash
 npm run dev
 ```
+
+Open [localhost:3000](http://localhost:3000), then go to [the content editor](http://localhost:3000/create). Enter text or a URL, choose a format and review the generated output.
 
 To prepare and serve a production build locally:
 
@@ -102,16 +83,14 @@ Example request to `POST /api/generate`:
 
 Valid tasks are `summary`, `youtube`, `shorts`, `social` and `seo`. The single-output route returns a `result` string. Bulk generation may omit formats whose requests failed.
 
-## Validation and current limits
+## Limitations
 
-This documentation was checked against the repository source and configuration. No application build, browser session or live provider request was run for this update.
-
-- The generation route trims source text to 4,000 characters before constructing the prompt.
-- Missing credentials or inference failures may produce a canned response with a successful HTTP status. A health response alone does not verify AI generation.
-- The login flow is a UI simulation, not a completed account or authorization system.
-- The trends endpoints currently return placeholder data. They are not a verified trends integration.
-- There is no `test` script in `package.json`. Build and lint commands are available, but no passing result is claimed here.
-- Web extraction depends on the target site's markup and accessibility. Generated content still needs factual and editorial review.
+- Sign-in is simulated. There is no completed account or authorization system.
+- Missing credentials or inference failures can return a canned response with a successful HTTP status. `/api/health` does not confirm that model generation works.
+- Source text is trimmed to 4,000 characters before the prompt is built.
+- Trends endpoints return placeholder data.
+- Article extraction depends on the site's markup and accessibility. Check generated text for factual errors before using it.
+- `package.json` has build and lint commands, but no `test` script.
 
 ## Project map
 
@@ -130,8 +109,8 @@ backend/      Alternative Python/FastAPI implementation
 - [Alternative backend guide](backend/README.md)
 - [Issues and feature requests](https://github.com/ArdaHFO/cspark-content-studio/issues)
 
-For a reproducible issue, include the route or screen, input type, generation settings and observed behavior. State whether the output came from a configured provider or a fallback. Keep credentials and private source material out of reports. Focused pull requests should explain what changed and how it was checked.
+For bugs, include the screen or route, input type, generation settings and what happened. Mention whether the response came from the provider or a canned fallback. Remove tokens and private source text.
 
-## License and credits
+## License
 
-Project code is distributed under the [MIT license](LICENSE). Model access and third-party packages remain subject to their respective terms. The existing CSpark logo is reused from this repository.
+Code is licensed under [MIT](LICENSE). Models and dependencies have their own terms. The CSpark logo is included in the repository.
